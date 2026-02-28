@@ -161,7 +161,7 @@ if selected_voice_pack_type == 'language':
     if os.system('cd {} && tar zc *.wav | ccrypt -e -K "{}" > {}.pkg'.format(output_directory, sound_password, language)) == 0:
         print("\nGenerated encrypted sound package at {}/{}.pkg".format(output_directory, language))
 elif selected_voice_pack_type == 'language_s7':
-    os.system('cd {} && mkdir -p ogg/sounds && echo "–1" > ogg/sounds/sound.info && echo 1 > ogg/sounds/sound.ver && echo {} > ogg/sounds/sound.name'.format(output_directory, language))
+    os.system('cd {} && mkdir -p ogg/sounds && echo "-1" > ogg/sounds/sound.info && echo 1 > ogg/sounds/sound.ver && echo {} > ogg/sounds/sound.name'.format(output_directory, language))
     os.system('cd {} && oggenc --quiet --downmix --bitrate 48 --resample 16000 *.wav && mv *.ogg ogg/sounds'.format(output_directory))
     os.system('cd {} && mksquashfs ogg/ audio_custom_{}.sqfs -quiet'.format(output_directory, language))
     print('\nS7 voice pack filesystem image has been generated and written to {}/audio_custom_{}.sqfs.'.format(output_directory, language))
